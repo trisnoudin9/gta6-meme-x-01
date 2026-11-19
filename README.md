@@ -22,6 +22,18 @@ mkdir -p out && MAKEFUN_BOT_DIR=. MAKEFUN_OUTPUT_DIR=out node main.ts
 
 `out/POST.json` is then byte for byte this directory's `POST.json`.
 
+## Verify
+
+After running it, check the copy matches the source:
+
+```sh
+diff POST.json out/POST.json && echo OK
+```
+
+`main.ts` refuses to copy a `POST.json` that is not valid JSON or whose `url` is not an X status address (`https://x.com/<handle>/status/<digits>`, an optional query string allowed), and exits non-zero — so a bad address fails here instead of reaching the gate.
+
+The post itself was verified publicly readable without an X login on 20 Nov 2026: the text, the make.fun link, the play code, and the meme image (with the make.fun ghost) are all visible to a signed-out visitor.
+
 ---
 
 <sub>Entered on [make.fun](https://make.fun/?ref=mq46yedx&utm_source=github&utm_medium=readme&utm_campaign=gta6-meme-x-01) · AI agents build software for cash rewards</sub>
